@@ -33,18 +33,76 @@ export default {
       chartInstance:null,//定义实例
       currentPage:1, //当前页
       totalPage:0,   //总页数
-      timerId:null   //定时器标识
+      timerId:null  //定时器标识
     };
   },
   watch: {},
   computed: {},
   destroyed(){
     clearInterval(this.timerId)
+     window.removeEventListener('resize',this.screenAdapter)
   },
   methods: {
     //初始化
     initChart() {
       this.chartInstance = this.$echarts.init(this.$refs.saleChart)
+      //对图表的初始配置
+      const initOption = {
+         title:{
+          text:'▎销售热点分析',
+          left:20,
+          top:20
+        },
+        grid:{
+          top:'20%',
+          left:'3%',
+          right:'8%',
+          bottom:'3%',
+          containLabel:true
+        },
+        xAxis: {
+          type: 'value'
+        },
+        yAxis: {
+          type: 'category'
+        },
+        tooltip:{
+          trigger:'axis',
+          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow'      // 默认为直线，可选为：'line' | 'shadow'
+          }
+        },
+        series: [{
+          type: 'bar',
+          label: { 
+            show: true,
+            position: 'right',
+            textStyle: {
+              color: '#F68300'
+            }
+          },
+          itemStyle: {
+            //设置圆角
+            emphasis: {
+              barBorderRadius: 7
+            },
+            normal: {
+              barBorderRadius: [0,15,15,0],
+              //设置渐变颜色
+              color: this.$echarts.graphic.LinearGradient(
+                0, 0, 1, 0,
+                [
+                  {offset: 0, color: '#5052EE'},
+                  {offset: 1, color: '#AB6EE5'}
+                ]
+              )
+            }
+          }
+        }]
+      }
+      //
+      this.chartInstance.setOption(initOption)
+
       //对图表对象进行鼠标移入移出
       this.chartInstance.on("mouseover",() => {
         clearInterval(this.timerId)
@@ -81,67 +139,16 @@ export default {
       const saleValues = dataSlice.map((item) => {
         return item.value
       })
-      const option = {
-        title:{
-          text:'▎销售热点分析',
-          textStyle:{
-            fontSize:20
-          },
-          left:20,
-          top:20
-        },
-        grid:{
-          top:'20%',
-          left:'3%',
-          right:'8%',
-          bottom:'3%',
-          containLabel:true
-        },
-        xAxis: {
-          type: 'value'
-        },
+      //option获取数据
+      const dataOption = {
         yAxis: {
-          type: 'category',
           data: saleNmaes
         },
-        tooltip:{
-          trigger:'axis',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'      // 默认为直线，可选为：'line' | 'shadow'
-          }
-        },
         series: [{
-          data: saleValues,
-          type: 'bar',
-          barWidth: 30,//柱状图宽度
-          label: { 
-            show: true,
-            position: 'right',
-            textStyle: {
-              color: '#F68300',
-              fontSize: 13
-            }
-          },
-          itemStyle: {
-            //设置圆角
-            emphasis: {
-              barBorderRadius: 7
-            },
-            normal: {
-              barBorderRadius: [0,15,15,0],
-              //设置渐变颜色
-              color: this.$echarts.graphic.LinearGradient(
-                0, 0, 1, 0,
-                [
-                  {offset: 0, color: '#5052EE'},
-                  {offset: 1, color: '#AB6EE5'}
-                ]
-              )
-            }
-          }
+          data: saleValues
         }]
       }
-      this.chartInstance.setOption(option)
+      this.chartInstance.setOption(dataOption)
     },
     //启动定时器
     setInterval() {
@@ -155,11 +162,46 @@ export default {
         }
         this.updateChart()
       }, 3000);
+    },
+    //option某些随着浏览器大小变化
+    screenAdapter() {
+      // 容器宽度变化 === this.$refs.saleChart.offsetWidth
+
+      //文字宽度
+      const titleFontSize = this.$refs.saleChart.offsetWidth / 100 * 3.6
+      console.log(titleFontSize)
+      //和分辨率大小相关的配置
+      const adapterOption = {
+        title:{
+          textStyle:{
+            fontSize:titleFontSize
+          }
+        },
+        series: [{
+          barWidth: titleFontSize,//柱状图宽度
+          label: { 
+            textStyle: {
+              fontSize: titleFontSize
+            }
+          },
+          itemStyle: {
+            //设置圆角
+            normal: {
+              barBorderRadius: [0,titleFontSize/2,titleFontSize/2,0]
+            }
+          }
+        }]
+      }
+      this.chartInstance.setOption(adapterOption)
+      //手动调用resize对象才能产生效果
+      this.chartInstance.resize()
     }
   },
   mounted() {
     this.initChart()
     this.getData()
+    //兼容浏览器窗口大小变化
+    window.addEventListener('resize',this.screenAdapter)
   }
 };
 </script>
