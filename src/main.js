@@ -12,7 +12,7 @@ import dayjs from 'dayjs'
 import 'lib-flexible'
 
 //引入全局css
-import './assets/css/index.css'
+import './assets/css/index.scss'
 
 Vue.prototype.$echarts = echarts//全局使用$echarts
 Vue.prototype.dayjs = dayjs //全局使用this.dayjs

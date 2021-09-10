@@ -38,16 +38,6 @@ export default {
   },
   watch: {},
   computed: {},
-  mounted() {
-    this.initChart()
-    this.getData()
-    //兼容浏览器窗口大小变化
-    window.addEventListener('resize',this.screenAdapter)
-  },
-   destroyed(){
-    clearInterval(this.timerId)
-     window.removeEventListener('resize',this.screenAdapter)
-  },
   methods: {
     //初始化
     initChart() {
@@ -202,63 +192,20 @@ export default {
       //手动调用resize对象才能产生效果
       this.chartInstance.resize()
     }
+  },
+  mounted() {
+    this.initChart()
+    this.getData()
+    //兼容浏览器窗口大小变化
+    window.addEventListener('resize',this.screenAdapter)
+  },
+   destroyed(){
+    clearInterval(this.timerId)
+    window.removeEventListener('resize',this.screenAdapter)
   }
 };
 </script>
 <style lang="scss" scoped>
-.sale-container{
-  width: 500px;
-  height: 400px;
-  background: rgba(255,255,255,.04) url('~assets/img/line.png');
-  border: 1px solid rgba(25,186,139,.17);
-  background-size: 100% auto;
-  position: relative;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  z-index: 10;
-  &:before, &:before {
-    border-left: 2px solid #02a6b5;
-    left: 0;
-  }
 
-  &:before, &:after {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    content: "";
-    border-top: 2px solid #02a6b5;
-    top: 0;
-  }
-  &:after, &:after {
-      border-right: 2px solid #02a6b5;
-      right: 0;
-  }
-  .sale-container-foot{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-    &:before, &:after {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      content: "";
-      border-bottom: 2px solid #02a6b5;
-      bottom: 0;
-    }
-    &:before, &:before {
-      border-left: 2px solid #02a6b5;
-      left: 0;
-    }
-    &:after, &:after {
-      border-right: 2px solid #02a6b5;
-      right: 0;
-    }
-  }
-  .sale-chart{
-    width: 100%;
-    height: 100%;
-  }
-}
 
 </style>

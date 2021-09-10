@@ -222,65 +222,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .data-loss-container{
-  width: 500px;
-  height: 400px;
-  background: rgba(255,255,255,.04) url('~assets/img/line.png');
-  border: 1px solid rgba(25,186,139,.17);
-  background-size: 100% auto;
-  position: relative;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  z-index: 10;
-  &:before, &:before {
-    border-left: 2px solid #02a6b5;
-    left: 0;
-  }
-
-  &:before, &:after {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    content: "";
-    border-top: 2px solid #02a6b5;
-    top: 0;
-  }
-  &:after, &:after {
-      border-right: 2px solid #02a6b5;
-      right: 0;
-  }
-  .data-container-foot{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-    &:before, &:after {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      content: "";
-      border-bottom: 2px solid #02a6b5;
-      bottom: 0;
-    }
-    &:before, &:before {
-      border-left: 2px solid #02a6b5;
-      left: 0;
-    }
-    &:after, &:after {
-      border-right: 2px solid #02a6b5;
-      right: 0;
-    }
-  }
-  .data-chart{
-    width: 100%;
-    height: 100%;
-  }
-  .title{
-    position:absolute;
-    top: 2%;
-    left: 4%;
-    color: #fff;
-    z-index: 100;
-    font-size: 24px;
-  }
+  margin-top:20px ;
 }
 </style>

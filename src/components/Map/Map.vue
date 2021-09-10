@@ -48,7 +48,7 @@ export default {
             label:{
               normal:{
                 textStyle:{
-                  
+                  fontSize:15
                 }
               }
             }
