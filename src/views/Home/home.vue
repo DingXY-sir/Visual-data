@@ -11,9 +11,13 @@
       <!-- left -->
       <div class="home-lt">
         <SaleHotspot></SaleHotspot>
+        <DataLoss></DataLoss>
+
       </div>
       <!-- center -->
-      <div class="home-cen"></div>
+      <div class="home-cen">
+        <Map></Map>
+      </div>
       <!-- right -->
       <div class="home-rg"></div>
     </div>
@@ -22,10 +26,14 @@
 
 <script>
 import SaleHotspot from 'components/SaleHotspot/SaleHotspot'
+import DataLoss from 'components/DataLoss/DataLoss'
+import Map from 'components/Map/Map'
 export default {
   name:'Home',
   components: {
-    SaleHotspot
+    SaleHotspot,
+    DataLoss,
+    Map
   },
   props: {},
   data() {

@@ -38,7 +38,13 @@ export default {
   },
   watch: {},
   computed: {},
-  destroyed(){
+  mounted() {
+    this.initChart()
+    this.getData()
+    //兼容浏览器窗口大小变化
+    window.addEventListener('resize',this.screenAdapter)
+  },
+   destroyed(){
     clearInterval(this.timerId)
      window.removeEventListener('resize',this.screenAdapter)
   },
@@ -184,7 +190,7 @@ export default {
               fontSize: titleFontSize
             }
           },
-          itemStyle: {
+          itemStyle: { 
             //设置圆角
             normal: {
               barBorderRadius: [0,titleFontSize/2,titleFontSize/2,0]
@@ -196,12 +202,6 @@ export default {
       //手动调用resize对象才能产生效果
       this.chartInstance.resize()
     }
-  },
-  mounted() {
-    this.initChart()
-    this.getData()
-    //兼容浏览器窗口大小变化
-    window.addEventListener('resize',this.screenAdapter)
   }
 };
 </script>
