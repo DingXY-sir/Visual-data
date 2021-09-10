@@ -280,7 +280,7 @@ export default {
     left: 4%;
     color: #fff;
     z-index: 100;
-    font-size: 20px;
+    font-size: 24px;
   }
 }
 </style>
