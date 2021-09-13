@@ -103,8 +103,11 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    .home-lt, .home-cen, .home-rg{
+    .home-cen{
       flex: 1;
+    }
+    .home-lt, .home-rg{
+      width: 500px;
     }
   }
 }

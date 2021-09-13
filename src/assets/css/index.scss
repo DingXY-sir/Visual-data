@@ -9,8 +9,8 @@ html {
 .sale-container,
 .data-loss-container,
 .script-container {
-  width: 500px;
-  height: 400px;
+  width: 480px;
+  height: 380px;
   background: rgba(255, 255, 255, 0.04) url("~assets/img/line.png");
   border: 1px solid rgba(25, 186, 139, 0.17);
   background-size: 100% auto;
@@ -19,8 +19,8 @@ html {
   margin-top: 15px;
   z-index: 10;
   canvas {
-    width: 500px !important;
-    height: 400px !important;
+    width: 480px !important;
+    height: 380px !important;
   }
   &:before,
   &:before {
