@@ -7,7 +7,8 @@ html {
   background-color: #161525;
 }
 .sale-container,
-.data-loss-container {
+.data-loss-container,
+.script-container {
   width: 500px;
   height: 400px;
   background: rgba(255, 255, 255, 0.04) url("~assets/img/line.png");
@@ -42,7 +43,8 @@ html {
     right: 0;
   }
   .sale-container-foot,
-  .data-container-foot {
+  .data-container-foot,
+  .script-container-foot {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -68,7 +70,8 @@ html {
     }
   }
   .sale-chart,
-  .data-chart {
+  .data-chart,
+  .script-chart {
     width: 100%;
     height: 100%;
   }

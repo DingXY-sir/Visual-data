@@ -16,10 +16,13 @@
       </div>
       <!-- center -->
       <div class="home-cen">
+        <Statistic></Statistic>
         <Map></Map>
       </div>
       <!-- right -->
-      <div class="home-rg"></div>
+      <div class="home-rg">
+        <Script></Script>
+      </div>
     </div>
   </div>
 </template>
@@ -28,12 +31,18 @@
 import SaleHotspot from 'components/SaleHotspot/SaleHotspot'
 import DataLoss from 'components/DataLoss/DataLoss'
 import Map from 'components/Map/Map'
+import Script from 'components/Script/Script'
+
+import Statistic from './common/statistic'
 export default {
   name:'Home',
   components: {
     SaleHotspot,
     DataLoss,
-    Map
+    Map,
+    Script,
+
+    Statistic
   },
   props: {},
   data() {

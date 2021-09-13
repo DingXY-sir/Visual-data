@@ -201,7 +201,7 @@ export default {
   },
    destroyed(){
     clearInterval(this.timerId)
-    window.removeEventListener('resize',this.screenAdapter)
+     window.removeEventListener('resize',this.screenAdapter)
   }
 };
 </script>
