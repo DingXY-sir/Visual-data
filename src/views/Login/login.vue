@@ -1,5 +1,6 @@
 <template>
   <div class="login-container">
+    <!-- 使用粒子效果 -->
     <vue-particles 
       class="vue-particles" 
       color="#dedede" 
@@ -71,8 +72,11 @@ export default {
         //如果vali为false校验不通过
         if(!valid) return; 
         //校验通过调登录接口
-        
+        if(this.login["username"] !="ding") return this.$message.error('登录失败');
+        this.$message.success('登录成功')
         //将token保存在
+        window.sessionStorage.setItem('token','dxy1217')
+        this.$router.push('/home')
       })
     },
     //重置
