@@ -83,8 +83,8 @@ export default {
     width: 100%;
     height: 75px;
     position: relative;
-    background: url('~assets/img/head_bg.png') no-repeat;
-    background-size: cover;
+    background: url('~assets/img/tbbg.png') no-repeat;
+    background-size: 100% 100%;
     text-align: center;
     line-height: 75px;
     color: #fff;

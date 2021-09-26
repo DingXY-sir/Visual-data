@@ -52,6 +52,8 @@ export default {
   flex-wrap: nowrap;
   .real-container{
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex:1;
     color: #fff;
     line-height: 2px;

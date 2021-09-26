@@ -5,9 +5,12 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const Home = () => import ('views/Home/home')
+const Login = () => import ('views/Login/login')
 
 const routes = [
-  {path:'/', name:'Home', component:Home}
+  {path:'/', redirect:'/login'},
+  {path:'/home', name:'Home', component:Home},
+  {path:'/login', name:'Login', component:Login},
 ]
 
 const router = new VueRouter({

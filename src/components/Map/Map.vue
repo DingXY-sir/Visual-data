@@ -81,7 +81,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .map-container{
-  width: 800px;
+  width: 100%;
   height: 800px;
   .map-chart{
     width: 100%;

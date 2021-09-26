@@ -10,7 +10,9 @@
     "core-js": "^3.6.5",
     "dayjs": "^1.10.6",
     "echarts": "^5.2.0",
+    "element-ui": "^2.15.6",
     "lib-flexible": "^0.3.2",
+    "particles.js": "^2.0.0",
     "postcss-px2rem": "^0.3.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
@@ -24,6 +26,7 @@
     "px2rem-loader": "^0.1.9",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "vue-particles": "^1.0.9",
     "vue-template-compiler": "^2.6.11"
   }
 }
